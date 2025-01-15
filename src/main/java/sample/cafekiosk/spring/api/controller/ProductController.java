@@ -1,5 +1,6 @@
 package sample.cafekiosk.spring.api.controller;
 
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,7 +9,7 @@ import sample.cafekiosk.spring.api.service.ProductService;
 
 import java.util.List;
 
-@RequiredArgsConstructor
+@AllArgsConstructor
 @RestController
 public class ProductController {
 
