@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum ProductType {
+public enum ProductStatus {
 
     HANDMADE("제조 음료"),
     BOTTLE("병 음료"),
@@ -16,5 +16,5 @@ public enum ProductType {
     private final String text;
 
     @Enumerated(EnumType.STRING)
-    private ProductType type;
+    private ProductStatus type;
 }
