@@ -1,5 +1,6 @@
 package sample.cafekiosk.spring.api.service;
 
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,6 +24,7 @@ import static sample.cafekiosk.spring.domain.product.ProductType.HANDMADE;
 
 
 @ActiveProfiles("test")
+@Transactional
 @SpringBootTest
 class OrderServiceTest {
 
@@ -38,13 +40,13 @@ class OrderServiceTest {
     @Autowired
     private OrderService orderService;
 
-    @AfterEach
-    void tearDown() {
-        // 데이터 클랜징 작업
-        orderProductRepository.deleteAllInBatch(); // deleteAll이랑 다름
-        productRepository.deleteAllInBatch();
-        orderRepository.deleteAllInBatch();
-    }
+//    @AfterEach
+//    void tearDown() {
+//        // 데이터 클랜징 작업
+//        orderProductRepository.deleteAllInBatch(); // deleteAll이랑 다름
+//        productRepository.deleteAllInBatch();
+//        orderRepository.deleteAllInBatch();
+//    }
 
     @DisplayName("주문 번호 리스트를 받아 주문을 생성한다.")
     @Test
