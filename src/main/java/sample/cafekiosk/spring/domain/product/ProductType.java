@@ -5,6 +5,8 @@ import jakarta.persistence.Enumerated;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @Getter
 @RequiredArgsConstructor
 public enum ProductType {
@@ -17,4 +19,8 @@ public enum ProductType {
 
     @Enumerated(EnumType.STRING)
     private ProductType type;
+
+    public static boolean containsStockType(ProductType type) {
+        return List.of(BOTTLE, BAKERY).contains(type);
+    }
 }
