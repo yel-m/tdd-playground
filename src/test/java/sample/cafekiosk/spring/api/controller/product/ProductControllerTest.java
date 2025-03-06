@@ -19,6 +19,9 @@ import sample.cafekiosk.spring.domain.product.ProductSellingStatus;
 import sample.cafekiosk.spring.domain.product.ProductType;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(controllers = ProductController.class)
 class ProductControllerTest {
@@ -44,11 +47,12 @@ class ProductControllerTest {
                 .build();
 
         // when // then
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/products/new")
-                .content(objectMapper.writeValueAsString(request))
-                .contentType(MediaType.APPLICATION_JSON)
+        mockMvc.perform(
+                    post("/api/v1/products/new")
+                        .content(objectMapper.writeValueAsString(request))
+                        .contentType(MediaType.APPLICATION_JSON)
         )
-                .andDo(MockMvcResultHandlers.print()) // 자세한 로그를 볼 수 있음
-                .andExpect(MockMvcResultMatchers.status().isOk());
+        .andDo(print()) // 자세한 로그를 볼 수 있음
+        .andExpect(status().isOk());
      }
 }
