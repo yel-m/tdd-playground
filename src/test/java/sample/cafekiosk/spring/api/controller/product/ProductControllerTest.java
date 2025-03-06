@@ -12,6 +12,7 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.assertj.MockMvcTester;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import sample.cafekiosk.spring.api.service.ProductService;
 import sample.cafekiosk.spring.domain.product.ProductSellingStatus;
@@ -47,6 +48,7 @@ class ProductControllerTest {
                 .content(objectMapper.writeValueAsString(request))
                 .contentType(MediaType.APPLICATION_JSON)
         )
+                .andDo(MockMvcResultHandlers.print()) // 자세한 로그를 볼 수 있음
                 .andExpect(MockMvcResultMatchers.status().isOk());
      }
 }
